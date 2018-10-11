@@ -23,8 +23,11 @@
 
 #include "Thread.h"
 
-__thread BOOL __CThread_Interrupt_::sm_tlsInterrupt	= FALSE;
+static __thread BOOL s_tlsInterrupt		= FALSE;
 BOOL __CThread_Interrupt_::sm_bInitFlag	= __CThread_Interrupt_::InitSigAction();
+
+__CThread_Interrupt_::~__CThread_Interrupt_	() {s_tlsInterrupt = FALSE;}
+BOOL __CThread_Interrupt_::IsInterrupted	() {return s_tlsInterrupt;}
 
 BOOL __CThread_Interrupt_::InitSigAction()
 {
@@ -43,5 +46,5 @@ BOOL __CThread_Interrupt_::InitSigAction()
 void __CThread_Interrupt_::SignalHandler(int sig)
 {
 	if(sig == SIG_NO)
-		sm_tlsInterrupt = TRUE;
+		s_tlsInterrupt = TRUE;
 }

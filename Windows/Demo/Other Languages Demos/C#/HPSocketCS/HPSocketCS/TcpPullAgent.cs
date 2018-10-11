@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +25,7 @@ namespace HPSocketCS
 
     public class TcpPullAgent : TcpAgent
     {
-        protected new TcpPullAgentEvent.OnReceiveEventHandler OnReceive;
+        public new TcpPullAgentEvent.OnReceiveEventHandler OnReceive;
 
 
 

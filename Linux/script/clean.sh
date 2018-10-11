@@ -29,6 +29,8 @@ do_remove $LIB_DIR obj
 
 do_remove . *.sdf
 do_remove . *.VC.db
+do_remove . *.VC.db-shm
+do_remove . *.VC.db-wal
 do_remove . *.cki
 
 if [ $RMV_ALL -eq 1 ]; then
